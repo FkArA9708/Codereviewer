@@ -1,0 +1,32 @@
+{
+  "id": 1763637895228,
+  "fileName": "index.php",
+  "originalCode": "<?php\r\n    // Functie: programma login OOP \r\n    // Auteur: Furkan Kara\r\n\r\n    // Zet error reporting aan\r\n    error_reporting(E_ALL);\r\n    ini_set('display_errors', 1);\r\n\r\n    // Start session bovenaan\r\n    if (session_status() === PHP_SESSION_NONE) {\r\n        session_start();\r\n    }\r\n\r\n    // Initialisatie\r\n    require_once 'classes/User.php';\r\n    \r\n    $user = new User();\r\n?>\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Home Pagina</title>\r\n</head>\r\n<body>\r\n\r\n    <h3>PDO Login and Registration</h3>\r\n    <hr/>\r\n\r\n    <h3>Welcome op de HOME-pagina!</h3>\r\n    <br />\r\n\r\n    <?php\r\n   \r\n    if (isset($_GET['logout']) && $_GET['logout'] == 'true') {\r\n        $user->logout();\r\n        echo \"<script>alert('U bent uitgelogd')</script>\";\r\n        echo \"<script>window.location = 'index.php'</script>\";\r\n    }\r\n\r\n    \r\n    if(!$user->isLoggedin()){\r\n        // Alert not login\r\n        echo \"U bent niet ingelogd. Login in om verder te gaan.<br><br>\";\r\n        // Toon login button\r\n        echo '<a href = \"login_form.php\">Login</a>';\r\n    } else {\r\n        \r\n        echo \"<h2>Het spel kan beginnen</h2>\";\r\n        echo \"Je bent ingelogd met:<br/>\";\r\n        echo \"Gebruikersnaam: \" . $_SESSION['gebruikersnaam'] . \"<br>\";\r\n        echo \"Email: \" . $_SESSION['email'] . \"<br>\";\r\n        echo \"Voornaam: \" . $_SESSION['voornaam'] . \"<br>\";\r\n        echo \"Achternaam: \" . $_SESSION['achternaam'] . \"<br>\";\r\n        echo \"<br><br>\";\r\n        echo '<a href = \"?logout=true\">Logout</a>';\r\n    }\r\n    ?>\r\n\r\n</body>\r\n</html>",
+  "improvedCode": "<?php\r\n    // Functie: programma login OOP \r\n    // Auteur: Furkan Kara\r\n\r\n    // Zet error reporting aan\r\n    error_reporting(E_ALL);\r\n    ini_set('display_errors', 1);\r\n\r\n    // Start session bovenaan\r\n    if (session_status() === PHP_SESSION_NONE) {\r\n        session_start();\r\n    }\r\n\r\n    // Initialisatie\r\n    require_once 'classes/User.php';\r\n    \r\n    $user = new User();\r\n?>\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Home Pagina</title>\r\n</head>\r\n<body>\r\n\r\n    <h3>PDO Login and Registration</h3>\r\n    <hr/>\r\n\r\n    <h3>Welcome op de HOME-pagina!</h3>\r\n    <br />\r\n\r\n    <?php\r\n   \r\n    if (isset($_GET['logout']) && $_GET['logout'] == 'true') {\r\n        $user->logout();\r\n        echo \"<script>alert('U bent uitgelogd')</script>\";\r\n        echo \"<script>window.location = 'index.php'</script>\";\r\n    }\r\n\r\n    \r\n    if(!$user->isLoggedin()){\r\n        // Alert not login\r\n        echo \"U bent niet ingelogd. Login in om verder te gaan.<br><br>\";\r\n        // Toon login button\r\n        echo '<a href = \"login_form.php\">Login</a>';\r\n    } else {\r\n        \r\n        echo \"<h2>Het spel kan beginnen</h2>\";\r\n        echo \"Je bent ingelogd met:<br/>\";\r\n        echo \"Gebruikersnaam: \" . $_SESSION['gebruikersnaam'] . \"<br>\";\r\n        echo \"Email: \" . $_SESSION['email'] . \"<br>\";\r\n        echo \"Voornaam: \" . $_SESSION['voornaam'] . \"<br>\";\r\n        echo \"Achternaam: \" . $_SESSION['achternaam'] . \"<br>\";\r\n        echo \"<br><br>\";\r\n        echo '<a href = \"?logout=true\">Logout</a>';\r\n    }\r\n    ?>\r\n\r\n</body>\r\n</html>\n\n// ECHETE AI ANALYSE UITGESCHAKELD\n// Voeg geldige OpenAI API key toe voor gedetailleerde code review",
+  "feedback": {
+    "overall": "❌ OPENAI API QUOTA FOUT: Voeg een geldige API key toe voor echte AI code analyse.",
+    "strengths": [
+      "Code structuur vereist analyse",
+      "Variabele namen vereisen review"
+    ],
+    "improvements": [
+      "Verkrijg OpenAI API key voor echte analyse",
+      "Controleer billing en quota instellingen",
+      "Activeer AI voor gedetailleerde feedback"
+    ],
+    "bestPractices": [
+      "Gebruik geldige API credentials",
+      "Monitor API gebruik en quotas",
+      "Implementeer goede foutafhandeling"
+    ]
+  },
+  "statistics": {
+    "complexity": "unknown",
+    "readability": "0",
+    "maintainability": "0",
+    "efficiency": "0"
+  },
+  "timestamp": "2025-11-20T11:24:55.228Z",
+  "language": "nl",
+  "aiEnabled": false
+}

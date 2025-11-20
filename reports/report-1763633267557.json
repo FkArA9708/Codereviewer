@@ -1,0 +1,33 @@
+{
+  "id": 1763633267557,
+  "fileName": "Film.php",
+  "fileSize": 444,
+  "originalCode": "<?php\r\nclass Film {\r\n    private $film_id;\r\n    private $name;\r\n    private $genre;  \r\n    \r\n    public function __construct($name, $genre, $film_id = null) {\r\n        $this->film_id = $film_id;\r\n        $this->name = $name;\r\n        $this->genre = $genre;  \r\n    }\r\n    \r\n    public function getId() { return $this->film_id; }\r\n    public function getName() { return $this->name; }\r\n    public function getGenre() { return $this->genre; }  \r\n}",
+  "improvedCode": "<?php\r\nclass Film {\r\n    private $film_id;\r\n    private $name;\r\n    private $genre;  \r\n    \r\n    public function __construct($name, $genre, $film_id = null) {\r\n        $this->film_id = $film_id;\r\n        $this->name = $name;\r\n        $this->genre = $genre;  \r\n    }\r\n    \r\n    public function getId() { return $this->film_id; }\r\n    public function getName() { return $this->name; }\r\n    public function getGenre() { return $this->genre; }  \r\n}\n\n// AI suggesties zouden hier verschijnen\n// Activeer OpenAI API voor echte analyse",
+  "feedback": {
+    "overall": "Dit is een demo analyse. Verbind met OpenAI API voor gedetailleerde code review en verbeteringen.",
+    "strengths": [
+      "Code structuur is leesbaar",
+      "Goede variabele namen"
+    ],
+    "improvements": [
+      "Voeg foutafhandeling toe",
+      "Gebruik const in plaats van let waar mogelijk",
+      "Splits grote functies in kleinere"
+    ],
+    "bestPractices": [
+      "Voeg commentaar toe voor complexe logica",
+      "Houd consistente code stijl aan",
+      "Gebruik moderne taal features"
+    ]
+  },
+  "statistics": {
+    "complexity": "medium",
+    "readability": "7",
+    "maintainability": "6",
+    "efficiency": "5"
+  },
+  "timestamp": "2025-11-20T10:07:47.557Z",
+  "language": "nl",
+  "analysisTime": "0s"
+}

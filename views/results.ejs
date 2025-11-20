@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="<%= language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= language === 'nl' ? 'Analyse Resultaten' : 'Analysis Results' %> - AI Code Analyzer
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">🧠 AI Code Analyzer</a>
+                <div class="nav-links">
+                    <div class="lang-switcher">
+                        <button class="lang-btn <%= language === 'nl' ? 'active' : '' %>" data-lang="nl">NL</button>
+                        <button class="lang-btn <%= language === 'en' ? 'active' : '' %>" data-lang="en">EN</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>
+                <%= language === 'nl' ? 'Analyse Resultaten' : 'Analysis Results' %>
+            </h1>
+            <p>
+                <%= language === 'nl' ? 
+                    `Bestand: ${report.fileName}` : 
+                    `File: ${report.fileName}` %>
+            </p>
+        </section>
+
+        <div class="results-grid">
+            <!-- Code Vergelijking -->
+            <div class="code-comparison">
+                <h3 class="mb-4">
+                    <%= language === 'nl' ? 'Code Vergelijking' : 'Code Comparison' %>
+                </h3>
+                
+                <div class="code-tabs">
+                    <button class="code-tab active" data-target="originalCode">
+                        <%= language === 'nl' ? 'Origineel' : 'Original' %>
+                    </button>
+                    <button class="code-tab" data-target="improvedCode">
+                        <%= language === 'nl' ? 'Verbeterd' : 'Improved' %>
+                    </button>
+                </div>
+
+                <div class="code-container">
+                    <div class="code-header">
+                        <%= language === 'nl' ? 'Code Weergave' : 'Code View' %>
+                    </div>
+                    <pre class="code-content" id="originalCode"><%- report.originalCode %></pre>
+                    <pre class="code-content hidden" id="improvedCode"><%- report.improvedCode %></pre>
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-section">
+                <h3 class="mb-4">
+                    <%= language === 'nl' ? 'AI Feedback' : 'AI Feedback' %>
+                </h3>
+
+                <div class="feedback-category">
+                    <h4>
+                        <%= language === 'nl' ? 'Algemene Beoordeling' : 'Overall Assessment' %>
+                    </h4>
+                    <div class="feedback-item">
+                        <%= report.feedback.overall %>
+                    </div>
+                </div>
+
+                <% if (report.feedback.strengths && report.feedback.strengths.length > 0) { %>
+                <div class="feedback-category">
+                    <h4>
+                        <%= language === 'nl' ? 'Sterke Punten' : 'Strengths' %>
+                    </h4>
+                    <ul class="feedback-list">
+                        <% report.feedback.strengths.forEach(strength => { %>
+                            <li class="feedback-item">✅ <%= strength %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                <% if (report.feedback.improvements && report.feedback.improvements.length > 0) { %>
+                <div class="feedback-category">
+                    <h4>
+                        <%= language === 'nl' ? 'Verbeterpunten' : 'Improvements' %>
+                    </h4>
+                    <ul class="feedback-list">
+                        <% report.feedback.improvements.forEach(improvement => { %>
+                            <li class="feedback-item">💡 <%= improvement %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                <% if (report.feedback.bestPractices && report.feedback.bestPractices.length > 0) { %>
+                <div class="feedback-category">
+                    <h4>
+                        <%= language === 'nl' ? 'Aanbevolen Practices' : 'Best Practices' %>
+                    </h4>
+                    <ul class="feedback-list">
+                        <% report.feedback.bestPractices.forEach(practice => { %>
+                            <li class="feedback-item">📚 <%= practice %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Statistieken -->
+        <section class="feedback-section mt-4">
+            <h3 class="mb-4">
+                <%= language === 'nl' ? 'Code Kwaliteit Statistieken' : 'Code Quality Statistics' %>
+            </h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">
+                        <%= report.statistics.complexity %>
+                    </div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'Complexiteit' : 'Complexity' %>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">
+                        <%= report.statistics.readability %>/10
+                    </div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'Leesbaarheid' : 'Readability' %>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">
+                        <%= report.statistics.maintainability %>/10
+                    </div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'Onderhoud' : 'Maintainability' %>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">
+                        <%= report.statistics.efficiency %>/10
+                    </div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'Efficiëntie' : 'Efficiency' %>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center mt-4">
+            <a href="/?lang=<%= language %>" class="btn">
+                <%= language === 'nl' ? '🔄 Nieuwe Analyse' : '🔄 New Analysis' %>
+            </a>
+        </div>
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

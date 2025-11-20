@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="<%= language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">🧠 AI Code Analyzer</div>
+                <div class="nav-links">
+                    <div class="lang-switcher">
+                        <button class="lang-btn <%= language === 'nl' ? 'active' : '' %>" data-lang="nl">NL</button>
+                        <button class="lang-btn <%= language === 'en' ? 'active' : '' %>" data-lang="en">EN</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>
+                <%= language === 'nl' ? 
+                    'AI Code Analyse & Verbetering' : 
+                    'AI Code Analysis & Improvement' %>
+            </h1>
+            <p>
+                <%= language === 'nl' ? 
+                    'Upload je code en ontvang direct AI-gestuurde feedback en verbeteringen' : 
+                    'Upload your code and receive instant AI-powered feedback and improvements' %>
+            </p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="upload-section">
+            <form id="analyzeForm" action="/analyze" method="post" enctype="multipart/form-data">
+                <div class="upload-area">
+                    <div class="upload-icon">📁</div>
+                    <h3 id="fileName">
+                        <%= language === 'nl' ? 
+                            'Klik of sleep een bestand hierheen' : 
+                            'Click or drag a file here' %>
+                    </h3>
+                    <p class="text-center mt-2">
+                        <%= language === 'nl' ? 
+                            'Ondersteunde formaten: .js, .py, .java, .html, .css, .php, .cpp, .c, .ts' : 
+                            'Supported formats: .js, .py, .java, .html, .css, .php, .cpp, .c, .ts' %>
+                    </p>
+                    <input type="file" class="file-input" name="codeFile" accept=".js,.py,.java,.html,.css,.php,.cpp,.c,.ts" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="targetLanguage" class="mb-2">
+                        <%= language === 'nl' ? 'Programmeertaal:' : 'Programming Language:' %>
+                    </label>
+                    <select name="targetLanguage" id="targetLanguage" class="btn" style="width: 100%; background: var(--surface); color: var(--text);">
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="php">PHP</option>
+                        <option value="cpp">C++</option>
+                        <option value="c">C</option>
+                        <option value="typescript">TypeScript</option>
+                    </select>
+                </div>
+
+                <input type="hidden" name="language" value="<%= language %>">
+                
+                <button type="submit" class="btn" style="width: 100%;">
+                    <%= language === 'nl' ? '📊 Code Analyseren' : '📊 Analyze Code' %>
+                </button>
+            </form>
+        </section>
+
+        <section class="features-section">
+            <h2 class="text-center mb-4">
+                <%= language === 'nl' ? 'Waarom onze AI Code Analyzer?' : 'Why Our AI Code Analyzer?' %>
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">🤖</div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'AI Gestuurd' : 'AI Powered' %>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">⚡</div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'Snel Resultaat' : 'Fast Results' %>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">📊</div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'Gedetailleerd Rapport' : 'Detailed Reports' %>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">🔒</div>
+                    <div class="stat-label">
+                        <%= language === 'nl' ? 'Veilig & Privé' : 'Safe & Private' %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="<%= language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= language === 'nl' ? 'Fout' : 'Error' %> - AI Code Analyzer
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">🧠 AI Code Analyzer</a>
+                <div class="nav-links">
+                    <div class="lang-switcher">
+                        <button class="lang-btn <%= language === 'nl' ? 'active' : '' %>" data-lang="nl">NL</button>
+                        <button class="lang-btn <%= language === 'en' ? 'active' : '' %>" data-lang="en">EN</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+            <h1>❌ 
+                <%= language === 'nl' ? 'Er ging iets mis' : 'Something went wrong' %>
+            </h1>
+            <p><%= message %></p>
+        </section>
+
+        <section class="upload-section text-center">
+            <div style="padding: 2rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">😕</div>
+                <h3 style="margin-bottom: 1rem; color: var(--error);">
+                    <%= language === 'nl' ? 'Oeps! Er trad een fout op' : 'Oops! An error occurred' %>
+                </h3>
+                <p style="margin-bottom: 2rem; color: var(--text-light);">
+                    <%= message %>
+                </p>
+                
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/?lang=<%= language %>" class="btn">
+                        <%= language === 'nl' ? '🔄 Opnieuw proberen' : '🔄 Try Again' %>
+                    </a>
+                    <button onclick="history.back()" class="btn" style="background: var(--secondary);">
+                        <%= language === 'nl' ? '⬅️ Terug' : '⬅️ Go Back' %>
+                    </button>
+                </div>
+
+                <% if (process.env.NODE_ENV === 'development' && typeof error !== 'undefined') { %>
+                <div style="margin-top: 2rem; padding: 1rem; background: var(--background); border-radius: 8px; text-align: left;">
+                    <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">
+                        <%= language === 'nl' ? 'Technische details:' : 'Technical details:' %>
+                    </h4>
+                    <pre style="font-size: 0.75rem; color: var(--text-light); overflow: auto;"><%= error.stack || error.message || error %></pre>
+                </div>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
